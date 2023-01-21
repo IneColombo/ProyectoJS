@@ -1,0 +1,21 @@
+/* NAVBAR */
+$font: 'Montserrat', sans-serif;
+
+.logo{
+    margin-left: 1.5%;
+}
+.navbar-nav{
+    width: 18%;
+    font-size: 20px;
+    font-family: $font;
+    font-weight: normal;
+    text-transform: uppercase;
+    .nav-link {
+        text-decoration: none;
+        color: #3a3a3a;
+        margin-left: 60%;
+        &:hover{
+            font-weight: 600;
+        }
+    }
+}

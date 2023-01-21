@@ -1,0 +1,57 @@
+/* FOOTER */
+$color-text: #005757;
+$font: 'Montserrat', sans-serif;
+
+footer{
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 0;
+    font-family: $font;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 5%;
+    .contacto{
+        text-decoration: none;
+        background-color: rgba($color: #005757, $alpha: 0.4);
+        border-radius: 5%;
+        padding: 0.2% 1% 0.2% 1%;
+        color: #f1f1f1;
+        margin-bottom: 0;
+        font-family: $font;
+        text-transform: uppercase;
+        font-weight: normal;
+        margin-left: 0%;
+        &:hover{
+            font-weight: bold;
+        }
+    }
+    .redes{
+        color: #3a3a3a;
+        font-size: 1.3em;
+        &:hover{
+            color: $color-text;
+        }
+    }
+    .pers{
+        display: flex;
+        column-gap: 5px;
+        align-items: center;
+        justify-content: center;
+        border-top-color: #dbdbdb;
+        border-top-width: 0.3px;
+        border-top-style: solid;
+        margin-bottom: 0%;
+        margin-top: 8px;
+        padding-top: 5px;
+        .logo__footer{
+            text-decoration: none;
+        }
+        h6{
+            text-transform: none;
+            font-weight: normal;
+            font-size: 12px;
+            margin-top: 9px;
+            color: #707070;
+        }
+    }
+}

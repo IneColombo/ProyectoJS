@@ -4,46 +4,96 @@ function mostrar (mensaje){
 }
 
 
+class producto{
 
-mostrar ("¡Hola! Te damos la bienvenida a BROTE");
+    constructor(nombre , precio, stock){
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
 
-let producto = "";
+    get_datos(){
+        mostrar("<-----STOCK----->");
+        console.log("Nombre: ", this.nombre);
+        console.log("Precio: ", this.precio);
+        console.log("Stock: ", this.stock);
+        mostrar("");
+    }
 
-      
-while (producto != "listo"){
-
-    producto = prompt("Ingrese el producto elegido: 'espejo' , 'pizarra' , 'otro' -o 'listo' para salir");
-    let cantidad;
-
-    if (producto == "otro"){
-        mostrar ("Nos comunicaremos con vos para asesorarte. ¡Gracias!")
-        break
-    }  
-
-    else if (producto != "listo"){
-
-        if(producto == "espejo" || "pizarra"){
-
-            console.log ("Elegiste", producto);
-            cantidad = prompt ("Ingrese la cantidad");
-
-            let demora = cantidad * 2;
-
-            if (cantidad <= 10){
-                console.log ("Cantidad:" , cantidad);
-                console.log ("Tu pedido estará listo en" , demora , "días hábiles");
-            }
-
-            else if (cantidad > 10){
-                mostrar ("Disculpa, el máximo de productos es 10")
-                mostrar ("Regarga el sitio y volvé a ingresar el producto")
-                break
-            }
+    get_stock(){
+        if(this.stock <= 0){
+            return false
+        }
+        else{
+            return true
         }
     }
-    
-    else{
-        mostrar("Gracias. ¡Te esperamos la próxima!")
+
+    update_stock(cantidad){
+        if (this.stock >= cantidad){
+            this.stock = this.stock - cantidad
+            return true;
+        }
+        else{
+            mostrar ("Disculpa, esa cantidad supera nuestro stock");
+            return false
+        }
     }
-    
+
+}
+
+
+mostrar ("¡Hola! Te damos la bienvenida a BROTE");
+mostrar ("");
+
+
+let lista_productos = [];
+
+lista_productos.push (new producto("pizarra", 3000, 10));
+lista_productos.push (new producto ("espejo", 8000, 8));
+lista_productos.push (new producto ("juego", 4000 , 5));
+
+
+//RENDER DE PRODUCTOS
+
+for(let producto of lista_productos){
+    producto.get_datos();
+}
+
+
+//SIMULACIÓN COMPRA USUARIO
+
+function buscar_productos (producto) {
+    return producto.nombre == compra_usuario
+}
+
+
+let compra_usuario = prompt ("Ingrese el nombre del producto que quiere comprar: \n 'espejo' , 'pizarra' o 'juego'");
+
+let resultado_productos = lista_productos.find(buscar_productos);
+
+
+if (resultado_productos != undefined){
+
+    if(resultado_productos.get_stock()){
+
+        let cantidad = prompt ("¿Cuántas unidades querés?");
+        let demora = cantidad *2;
+
+        if(resultado_productos.update_stock(cantidad)){
+            console.log ("Tu pedido estará listo en" , demora , "días hábiles")
+            mostrar("Gracias. ¡Te esperamos la próxima!")
+            mostrar("")
+        }
+        else{
+            mostrar("No se pudo realizar la compra")
+            mostrar("Recarga el sitio y volvé a ingresar el producto")
+            mostrar("")
+        }
+    }
+    resultado_productos.get_datos();
+}
+else{
+    mostrar("Producto no encontrado")
+    mostrar("Recarga el sitio y volvé a ingresar el producto")
 }
